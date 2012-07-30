@@ -5,9 +5,9 @@ class Academic {
 	String firstName
 	String middleName
 	String lastName
-	static hasMany = [supervises:Thesis]
+	static hasMany = [supervises:Academic]
 	static hasOne = [published:Thesis]
-	static belongsTo = [institution:Institution, country:Country]
+	static belongsTo = [institution:Institution, country:Country, supervisor:Academic]
 	static mappedBy = [published:"author", supervises:"supervisor"]
 	
 	static searchFields = {

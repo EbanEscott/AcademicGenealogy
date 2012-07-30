@@ -104,6 +104,5 @@ class ThesisController {
             redirect(action: "show", id: params.id)
         }
     }
-    
     */
 }

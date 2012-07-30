@@ -61,6 +61,7 @@
 			<div class="pagination">
 				<g:paginate total="${academicInstanceTotal}" />
 			</div>
+		    <h3><a href="find">Create Academic Genealogy Tree</a></h3>
 		</div>
 	</body>
 </html>

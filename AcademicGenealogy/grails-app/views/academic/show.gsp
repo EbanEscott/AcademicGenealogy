@@ -82,8 +82,17 @@
 					<span id="supervises-label" class="property-label"><g:message code="academic.supervises.label" default="Supervises" /></span>
 					
 						<g:each in="${academicInstance.supervises}" var="s">
-						<span class="property-value" aria-labelledby="supervises-label"><g:link controller="thesis" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="supervises-label"><g:link controller="academic" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
 						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${academicInstance?.supervisor}">
+				<li class="fieldcontain">
+					<span id="supervisor-label" class="property-label"><g:message code="academic.supervisor.label" default="Supervisor" /></span>
+					
+						<span class="property-value" aria-labelledby="supervisor-label"><g:link controller="academic" action="show" id="${academicInstance?.supervisor?.id}">${academicInstance?.supervisor?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

@@ -21,13 +21,30 @@ class AcademicController {
 	def tree() {
 		def academic
 		!params.lastName ? (academic = null) : (academic = Academic.findByLastName(params.lastName))
-		String testString = ""
+		String htmlOutput = ""
+		def academicList = [academic]
+		def supervisesList = []
 		if (academic != null) {
 			for (int i = 0; i < params.int('depth'); i++) {
-				println("here")
+				htmlOutput += "<p>"
+				for (person in academicList) {
+					htmlOutput += '||| <a href="tree?lastName='
+					htmlOutput += "${person.lastName}"
+					htmlOutput += '&depth='
+					htmlOutput += "${params.depth}"
+					htmlOutput += '">'
+					htmlOutput += "${person.firstName} ${person.lastName} </a> |||"
+					supervisesList += person.supervises
+				}
+				htmlOutput += "</p>"
+				academicList.clear()
+				academicList += supervisesList
+				supervisesList.clear()
 			}
+		} else {
+			render("Unknown Surame")
 		}
-		render("a" << testString << "b")
+		render(htmlOutput)
 	}
 
     def create() {

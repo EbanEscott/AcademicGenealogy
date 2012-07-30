@@ -58,12 +58,20 @@
 	
 <ul class="one-to-many">
 <g:each in="${academicInstance?.supervises?}" var="s">
-    <li><g:link controller="thesis" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+    <li><g:link controller="academic" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="thesis" action="create" params="['academic.id': academicInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'thesis.label', default: 'Thesis')])}</g:link>
+<g:link controller="academic" action="create" params="['academic.id': academicInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'academic.label', default: 'Academic')])}</g:link>
 </li>
 </ul>
 
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: academicInstance, field: 'supervisor', 'error')} required">
+	<label for="supervisor">
+		<g:message code="academic.supervisor.label" default="Supervisor" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="supervisor" name="supervisor.id" from="${academicgenealogy.Academic.list()}" optionKey="id" required="" value="${academicInstance?.supervisor?.id}" class="many-to-one"/>
 </div>
 

@@ -4,8 +4,8 @@ class Thesis {
 	String name
 	Date published
 	static hasMany = [fields:Field]
-	static belongsTo = [author:Academic, supervisor:Academic]
-	static mappedBy = [author:"published", supervisor:"supervises"]
+	static belongsTo = [author:Academic]
+	static mappedBy = [author:"published"]
 	
     static constraints = {
 		
