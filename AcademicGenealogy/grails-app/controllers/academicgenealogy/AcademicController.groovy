@@ -3,10 +3,6 @@ package academicgenealogy
 import org.springframework.dao.DataIntegrityViolationException
 
 class AcademicController {
-	
-	static scaffold = Academic
-	
-	/*
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -18,6 +14,21 @@ class AcademicController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [academicInstanceList: Academic.list(params), academicInstanceTotal: Academic.count()]
     }
+	
+	def find() {
+	}
+	
+	def tree() {
+		def academic
+		!params.lastName ? (academic = null) : (academic = Academic.findByLastName(params.lastName))
+		String testString = ""
+		if (academic != null) {
+			for (int i = 0; i < params.int('depth'); i++) {
+				println("here")
+			}
+		}
+		render("a" << testString << "b")
+	}
 
     def create() {
         [academicInstance: new Academic(params)]
@@ -104,5 +115,4 @@ class AcademicController {
             redirect(action: "show", id: params.id)
         }
     }
-    */
 }

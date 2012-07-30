@@ -5,5 +5,6 @@ class Institution {
 	static hasMany = [academics:Academic]
 	
     static constraints = {
+		name blank:false, maxSize:50
     }
 }

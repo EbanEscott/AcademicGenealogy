@@ -7,5 +7,9 @@ class Field {
 	static hasMany = [subFields: Field]
 
     static constraints = {
+		name blank:false, maxSize:50
+		description maxSize:1000
+		thesises nullable:true
+		parentField nullable:true
     }
 }
