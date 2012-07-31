@@ -30,9 +30,14 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
     }
-    dependencies {
+    
+ 	dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-
+		  test "org.seleniumhq.selenium:selenium-htmlunit-driver:2.25.0"
+		  test "org.seleniumhq.selenium:selenium-firefox-driver:2.25.0"
+		  test "org.seleniumhq.selenium:selenium-support:2.25.0"
+		  test "org.codehaus.geb:geb-junit4:0.7.0"
+		  test "org.codehaus.geb:geb-spock:0.7.1"
         // runtime 'mysql:mysql-connector-java:5.1.16'
     }
 
@@ -49,5 +54,8 @@ grails.project.dependency.resolution = {
         //runtime ":yui-minify-resources:0.1.4"
 
         build ":tomcat:$grailsVersion"
+        
+        test ":spock:0.6"
+  		test ":geb:0.7.1"
     }
 }
