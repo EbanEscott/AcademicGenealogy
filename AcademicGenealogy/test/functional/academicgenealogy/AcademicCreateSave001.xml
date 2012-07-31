@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tes:testcase filename="MapCreateSave001"
+	xmlns:tes="http://workingmouse.com.au/testcase">
+	<tes:setup>
+		<tes:database>
+			<tes:dataset>
+				<tes:table name="plugin_map">
+					<tes:column>title</tes:column>
+					<tes:column>height</tes:column>
+					<tes:column>zoom</tes:column>
+					<tes:column>street</tes:column>
+					<tes:column>width</tes:column>
+					<tes:column>page_tile_id</tes:column>
+					<tes:column>lng</tes:column>
+					<tes:column>type</tes:column>
+					<tes:column>lat</tes:column>
+					<tes:column>mapType</tes:column>
+					<tes:row>
+						<tes:value>zxxkre4yg9mx4gk</tes:value>
+						<tes:value>937</tes:value>
+						<tes:value>13</tes:value>
+						<tes:value>62 Jephson St, Toowong QLD 4066, Australia</tes:value>
+						<tes:value>954</tes:value>
+						<tes:value>1000</tes:value>
+						<tes:value>152.9909394999999</tes:value>
+						<tes:value>google</tes:value>
+						<tes:value>-27.4850433</tes:value>
+						<tes:value>roadmap</tes:value>
+					</tes:row>
+					<tes:row>
+						<tes:value>pi0abj7gudosai</tes:value>
+						<tes:value>756</tes:value>
+						<tes:value>13</tes:value>
+						<tes:value>62 Jephson St, Toowong QLD 4066, Australia</tes:value>
+						<tes:value>207</tes:value>
+						<tes:value>1001</tes:value>
+						<tes:value>152.9909394999999</tes:value>
+						<tes:value>google</tes:value>
+						<tes:value>-27.4850433</tes:value>
+						<tes:value>roadmap</tes:value>
+					</tes:row>
+					<tes:row>
+						<tes:value>n34059ynfe9bclyojkuvp00uo8krikq3</tes:value>
+						<tes:value>223</tes:value>
+						<tes:value>13</tes:value>
+						<tes:value>62 Jephson St, Toowong QLD 4066, Australia</tes:value>
+						<tes:value>550</tes:value>
+						<tes:value>1002</tes:value>
+						<tes:value>152.9909394999999</tes:value>
+						<tes:value>google</tes:value>
+						<tes:value>-27.4850433</tes:value>
+						<tes:value>roadmap</tes:value>
+					</tes:row>
+				</tes:table>
+				<tes:table name="page_tiles">
+					<tes:column>id</tes:column>
+					<tes:column>parent_id</tes:column>
+					<tes:column>page_id</tes:column>
+					<tes:column>tile_type_id</tes:column>
+					<tes:column>column</tes:column>
+					<tes:column>order</tes:column>
+					<tes:column>system</tes:column>
+					<tes:column>justify</tes:column>
+					<tes:column>padding</tes:column>
+					<tes:column>margin</tes:column>
+					<tes:row>
+						<tes:value>1000</tes:value>
+						<tes:value>0</tes:value>
+						<tes:value>2</tes:value>
+						<tes:value>22</tes:value>
+						<tes:value>0</tes:value>
+						<tes:value>1</tes:value>
+						<tes:value>0</tes:value>
+						<tes:value>left</tes:value>
+						<tes:value>10px</tes:value>
+						<tes:value>0</tes:value>
+					</tes:row>
+					<tes:row>
+						<tes:value>1001</tes:value>
+						<tes:value>0</tes:value>
+						<tes:value>2</tes:value>
+						<tes:value>22</tes:value>
+						<tes:value>0</tes:value>
+						<tes:value>1</tes:value>
+						<tes:value>0</tes:value>
+						<tes:value>left</tes:value>
+						<tes:value>10px</tes:value>
+						<tes:value>0</tes:value>
+					</tes:row>
+					<tes:row>
+						<tes:value>1003</tes:value>
+						<tes:value>0</tes:value>
+						<tes:value>2</tes:value>
+						<tes:value>22</tes:value>
+						<tes:value>0</tes:value>
+						<tes:value>1</tes:value>
+						<tes:value>0</tes:value>
+						<tes:value>left</tes:value>
+						<tes:value>10px</tes:value>
+						<tes:value>0</tes:value>
+					</tes:row>
+				</tes:table>
+			</tes:dataset>
+		</tes:database>
+	</tes:setup>
+	<tes:input>
+		<tes:html>
+			<tes:textfield name="wmAdminMapHeight" value="973" />
+			<tes:textfield name="wmAdminMapZoom" value="13" />
+			<tes:textfield name="wmAdminMapStreet"
+				value="62 Jephson St, Toowong QLD 4066, Australia" />
+			<tes:textfield name="wmAdminMapWidth" value="555" />
+			<tes:textfield name="wmAdminMapLng" value="152.9909394999999" />
+			<tes:textfield name="wmAdminMapLat" value="-27.4850433" />
+			<tes:button name="wmAdminSubmitBtn" />
+			<tes:selectoption name="wmAdminMapType" value="google" />
+			<tes:selectoption name="wmAdminMapMapType" value="roadmap" />
+		</tes:html>
+	</tes:input>
+	<tes:expected>
+		<tes:html>
+			<tes:element name="wmMapCanvas" />
+		</tes:html>
+		<tes:database>
+			<tes:dataset>
+				<tes:table name="plugin_map">
+					<tes:column>height</tes:column>
+					<tes:column>street</tes:column>
+					<tes:column>width</tes:column>
+					<tes:column>lng</tes:column>
+					<tes:column>type</tes:column>
+					<tes:column>lat</tes:column>
+					<tes:column>mapType</tes:column>
+					<tes:row>
+						<tes:value>937</tes:value>
+						<tes:value>62 Jephson St, Toowong QLD 4066, Australia</tes:value>
+						<tes:value>954</tes:value>
+						<tes:value>152.9909394999999</tes:value>
+						<tes:value>google</tes:value>
+						<tes:value>-27.4850433</tes:value>
+						<tes:value>roadmap</tes:value>
+					</tes:row>
+					<tes:row>
+						<tes:value>756</tes:value>
+						<tes:value>62 Jephson St, Toowong QLD 4066, Australia</tes:value>
+						<tes:value>207</tes:value>
+						<tes:value>152.9909394999999</tes:value>
+						<tes:value>google</tes:value>
+						<tes:value>-27.4850433</tes:value>
+						<tes:value>roadmap</tes:value>
+					</tes:row>
+					<tes:row>
+						<tes:value>223</tes:value>
+						<tes:value>62 Jephson St, Toowong QLD 4066, Australia</tes:value>
+						<tes:value>550</tes:value>
+						<tes:value>152.9909394999999</tes:value>
+						<tes:value>google</tes:value>
+						<tes:value>-27.4850433</tes:value>
+						<tes:value>roadmap</tes:value>
+					</tes:row>
+					<tes:row>
+						<tes:value>973</tes:value>
+						<tes:value>62 Jephson St, Toowong QLD 4066, Australia</tes:value>
+						<tes:value>555</tes:value>
+						<tes:value>152.9909394999999</tes:value>
+						<tes:value>google</tes:value>
+						<tes:value>-27.4850433</tes:value>
+						<tes:value>roadmap</tes:value>
+					</tes:row>
+				</tes:table>
+			</tes:dataset>
+		</tes:database>
+	</tes:expected>
+</tes:testcase>
