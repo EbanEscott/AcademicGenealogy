@@ -37,7 +37,6 @@ grails.project.dependency.resolution = {
 		  test "org.seleniumhq.selenium:selenium-firefox-driver:2.25.0"
 		  test "org.seleniumhq.selenium:selenium-support:2.25.0"
 		  test "org.codehaus.geb:geb-junit4:0.7.0"
-		  test "org.codehaus.geb:geb-spock:0.7.1"
         // runtime 'mysql:mysql-connector-java:5.1.16'
     }
 
@@ -54,8 +53,6 @@ grails.project.dependency.resolution = {
         //runtime ":yui-minify-resources:0.1.4"
 
         build ":tomcat:$grailsVersion"
-        
-        test ":spock:0.6"
-  		test ":geb:0.7.1"
+		test ":geb:0.7.1"
     }
 }
