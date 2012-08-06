@@ -7,4 +7,8 @@ class Institution {
     static constraints = {
 		name blank:false, maxSize:50
     }
+	
+	String toString() {
+		return this.name
+	}
 }

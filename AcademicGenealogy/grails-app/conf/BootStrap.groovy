@@ -34,7 +34,7 @@ class BootStrap {
 		def soc = new Academic(firstName:'Socrates', middleName:'', lastName:'Alopece', country:gre, institution:soac, supervisor:deity).save(failOnError:true)
 		def pla = new Academic(firstName:'Plato', middleName:'', lastName:'Athens', country:gre, institution:soac, supervisor:soc).save(failOnError:true)
 		def ari = new Academic(firstName:'Aristotle', middleName:'', lastName:'Chalcidice', country:gre, institution:plac, supervisor:pla).save(failOnError:true)
-		def ale = new Academic(firstName:'Alexander', middleName:'', lastName:'The Great', country:gre, institution:plac, supervisor:ari).save(failOnError:true)
+		def ale = new Academic(firstName:'Alexander', middleName:'The', lastName:'Great', country:gre, institution:plac, supervisor:ari).save(failOnError:true)
 
 		def newt = new Academic(firstName:'Isaac', middleName:'', lastName:'Newton', country:eng, institution:uox, supervisor:deity).save(failOnError:true)
 		def alan = new Academic(firstName:'Alan', middleName:'', lastName:'Turing', country:eng, institution:uman, supervisor:newt).save(failOnError:true)

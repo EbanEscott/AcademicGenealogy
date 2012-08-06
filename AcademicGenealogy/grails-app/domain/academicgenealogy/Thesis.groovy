@@ -12,4 +12,8 @@ class Thesis {
 		name maxSize:50, unique:true, blank:false
 		published nullable:false
     }
+	
+	String toString() {
+		return this.name
+	}
 }

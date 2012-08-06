@@ -17,9 +17,13 @@ class Academic {
 	}
 	
     static constraints = {
-		firstName blank:false, maxSize:50
-		middleName maxSize:50
-		lastName blank:false, maxSize:50
+		firstName matches:"[\\S]+", blank:false, maxSize:50
+		middleName matches:"[\\S]+", maxSize:50
+		lastName matches:"[\\S]+", blank:false, maxSize:50
 		published nullable:true
     }
+	
+	String toString() {
+		return this.firstName + " " + this.middleName + " " + this.lastName
+	}
 }

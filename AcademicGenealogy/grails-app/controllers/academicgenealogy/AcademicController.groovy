@@ -1,6 +1,8 @@
 package academicgenealogy
 
 import org.springframework.dao.DataIntegrityViolationException
+import groovy.xml.MarkupBuilder
+
 
 class AcademicController {
 
@@ -16,35 +18,49 @@ class AcademicController {
     }
 	
 	def find() {
+		def writer = new StringWriter()
+		def xml = new MarkupBuilder(writer)
+		
+		def academic
+		if (!params.name) {
+			 (academic = null)
+		} else {
+		    String lName = params.name.split(" ")[-1]
+		    academic = Academic.findByLastName(lName)
+		}
+		
+		addCurAndSuper(xml, academic, params.int('depth'))
+		
+		["data":writer.toString()]
 	}
 	
-	def tree() {
-		def academic
-		!params.lastName ? (academic = null) : (academic = Academic.findByLastName(params.lastName))
-		String htmlOutput = ""
-		def academicList = [academic]
-		def supervisesList = []
-		if (academic != null) {
-			for (int i = 0; i < params.int('depth'); i++) {
-				htmlOutput += "<p>"
-				for (person in academicList) {
-					htmlOutput += '||| <a href="tree?lastName='
-					htmlOutput += "${person.lastName}"
-					htmlOutput += '&depth='
-					htmlOutput += "${params.depth}"
-					htmlOutput += '">'
-					htmlOutput += "${person.firstName} ${person.lastName} </a> |||"
-					supervisesList += person.supervises
+	def addCurAndSuper(builder, currentAcademic, depth) {
+		if (depth == 0 || currentAcademic == null) return
+		else {
+			builder.current(name:currentAcademic.firstName + " " + currentAcademic.lastName, id:currentAcademic.id, expanded:true) {
+				for (person in currentAcademic.supervises) {
+					addCurAndSuper(builder, person, depth-1)
 				}
-				htmlOutput += "</p>"
-				academicList.clear()
-				academicList += supervisesList
-				supervisesList.clear()
 			}
-		} else {
-			render("Unknown Surame")
 		}
-		render(htmlOutput)
+	}
+	
+	def autoSearch = {
+		def byFname = Academic.findAllByFirstNameIlike("%${params.query}%")
+		def byMname = Academic.findAllByMiddleNameIlike("%${params.query}%")
+		def byLname = Academic.findAllByLastNameIlike("%${params.query}%")
+		def aNames = byFname + byMname + byLname
+		aNames = aNames.unique()
+		
+		render(contentType: "text/xml") {
+			results() {
+				aNames.each { currentA ->
+					result() {
+						name(currentA.firstName + " " +  currentA.middleName +  " " + currentA.lastName)
+					}
+				}
+			}
+		}
 	}
 
     def create() {

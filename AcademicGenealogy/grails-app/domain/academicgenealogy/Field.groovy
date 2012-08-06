@@ -12,4 +12,8 @@ class Field {
 		thesises nullable:true
 		parentField nullable:true
     }
+	
+	String toString() {
+		return this.name
+	}
 }
