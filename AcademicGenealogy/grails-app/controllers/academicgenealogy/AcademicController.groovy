@@ -7,30 +7,24 @@ import grails.plugins.springsecurity.Secured
 @Secured(['ROLE_ADMIN'])
 class AcademicController {
 	
-	def academicService
-
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
-    def index() {
-        redirect(action: "list", params: params)
-    }
-
-    def list() {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [academicInstanceList: Academic.list(params), academicInstanceTotal: Academic.count()]
-    }
+	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
+	//inject instance of academic service
+	def academicService
+	
+	//this method/view allows searching for academics and generating their academic genealogies
 	def find() {
 		def academic
 		if (!params.name || !params.depth) {
 			 (academic = null)
 		} else {
-		    String lName = params.name.split(" ")[-1]
-		    academic = Academic.findByLastName(lName)
+			String lName = params.name.split(" ")[-1]
+			academic = Academic.findByLastName(lName)
 		}
 		["data":academicService.generateTree(academic, params.int('depth'))]
 	}
 	
+	//this method generates a list of possible names for use in autofill searchbox
 	def autoSearch = {
 		def byFname = Academic.findAllByFirstNameIlike("%${params.query}%")
 		def byMname = Academic.findAllByMiddleNameIlike("%${params.query}%")
@@ -48,6 +42,15 @@ class AcademicController {
 			}
 		}
 	}
+
+    def index() {
+        redirect(action: "list", params: params)
+    }
+
+    def list() {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        [academicInstanceList: Academic.list(params), academicInstanceTotal: Academic.count()]
+    }
 
     def create() {
         [academicInstance: new Academic(params)]

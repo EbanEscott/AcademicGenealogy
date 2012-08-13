@@ -44,9 +44,12 @@ grails.project.dependency.resolution = {
         runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.7.1"
         runtime ":resources:1.1.6"
+		//added richui for tree and autofill searchbox
 		compile ":richui:0.8"
+		//added springsec for login etc
 		compile ":spring-security-core:1.2.7.3"
         build ":tomcat:$grailsVersion"
+		//added geb for testing
 		test ":geb:0.7.1"
     }
 }

@@ -74,4 +74,3 @@
 	</label>
 	<g:select id="supervisor" name="supervisor.id" from="${academicgenealogy.Academic.list()}" optionKey="id" required="" value="${academicInstance?.supervisor?.id}" class="many-to-one"/>
 </div>
-

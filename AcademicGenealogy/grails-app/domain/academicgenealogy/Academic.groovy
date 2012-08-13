@@ -17,6 +17,7 @@ class Academic {
 	}
 	
     static constraints = {
+		//No whitespace allowed in names, first and last names must be given
 		firstName matches:"[\\S]+", blank:false, maxSize:50
 		middleName matches:"[\\S]+", maxSize:50
 		lastName matches:"[\\S]+", blank:false, maxSize:50
