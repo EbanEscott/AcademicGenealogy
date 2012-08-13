@@ -3,8 +3,7 @@ import academicgenealogy.*
 class BootStrap {
 
     def init = { servletContext ->
-		
-		
+
 		//Create countries
 		def aus = new Country(name:'Australia').save(failOnError:true)
 		def nz = new Country(name:'New Zealand').save(failOnError:true)
@@ -56,6 +55,14 @@ class BootStrap {
 		def pri = new Thesis(name:'Philosophiae Naturalis Principia Mathematica', published:new Date(1685,6,6), fields:[phy, sci], author:newt).save(failOnError:true)
 		def comp = new Thesis(name:'On Computable Numbers, with an Application to the Entscheidungs Problem', published:new Date(1936,6,6), author:alan, fields:[cs, sci]).save(failOnError:true)
 		def meta = new Thesis(name:"On the Nature of Meta-Physics", published:new Date(0,1,1), fields:[hum], author:pla).save(failOnError:true)
+		
+		
+		
+		
+		//Set up security
+		def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush:true)
+		def adminUser = new User(username:'admin', enabled:true, password:'admin').save(flush:true)
+		UserRole.create(adminUser, adminRole, true)
     }
     def destroy = {
     }

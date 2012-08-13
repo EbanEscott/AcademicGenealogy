@@ -2,8 +2,9 @@ package academicgenealogy
 
 import org.springframework.dao.DataIntegrityViolationException
 import groovy.xml.MarkupBuilder
+import grails.plugins.springsecurity.Secured
 
-
+@Secured(['ROLE_ADMIN'])
 class AcademicController {
 	
 	def academicService
