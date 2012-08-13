@@ -53,8 +53,9 @@ class BootStrap {
 		def ir = new Field(name:'International Relations', description:'', parentField:hum).save(failOnError:true)
 
 		//Create thesises
-		//def pri = new Thesis(name:'Philosophiæ Naturalis Principia Mathematica', published:new Date(1685,6,6), fields:[phy], author:newt, supervisor:deity).save(failOnError:true)
-		//def comp = new Thesis(name:'On Computable Numbers, with an Application to the Entscheidungs Problem', published:new Date(1936,6,6), author:alan, fields:[cs], supervisor:deity).save(failOnError:true)
+		def pri = new Thesis(name:'Philosophiae Naturalis Principia Mathematica', published:new Date(1685,6,6), fields:[phy, sci], author:newt).save(failOnError:true)
+		def comp = new Thesis(name:'On Computable Numbers, with an Application to the Entscheidungs Problem', published:new Date(1936,6,6), author:alan, fields:[cs, sci]).save(failOnError:true)
+		def meta = new Thesis(name:"On the Nature of Meta-Physics", published:new Date(0,1,1), fields:[hum], author:pla).save(failOnError:true)
     }
     def destroy = {
     }

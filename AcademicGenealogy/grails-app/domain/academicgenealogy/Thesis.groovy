@@ -9,7 +9,7 @@ class Thesis {
 	
     static constraints = {
 		
-		name maxSize:50, unique:true, blank:false
+		name maxSize:150, unique:true, blank:false
 		published nullable:false
     }
 	
