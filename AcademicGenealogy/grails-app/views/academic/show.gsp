@@ -99,7 +99,7 @@
 				
 				<li class="fieldcontain">
 					<span id="tree-label" class="property-label">Create Tree</span>
-						<span class="property-value" aria-labelledby="tree-label"><g:link controller="academic" action="find" params="[name: academicInstance.lastName, depth:'5']">Generate</g:link></span>
+						<span class="property-value" aria-labelledby="tree-label"><g:link controller="academic" action="find" params="[name: academicInstance.toString(), depth:'5']">Generate</g:link></span>
 					
 				</li>
 			

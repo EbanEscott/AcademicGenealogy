@@ -5,6 +5,8 @@ import groovy.xml.MarkupBuilder
 
 
 class AcademicController {
+	
+	def academicService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -18,31 +20,14 @@ class AcademicController {
     }
 	
 	def find() {
-		def writer = new StringWriter()
-		def xml = new MarkupBuilder(writer)
-		
 		def academic
-		if (!params.name) {
+		if (!params.name || !params.depth) {
 			 (academic = null)
 		} else {
 		    String lName = params.name.split(" ")[-1]
 		    academic = Academic.findByLastName(lName)
 		}
-		
-		addCurAndSuper(xml, academic, params.int('depth'))
-		
-		["data":writer.toString()]
-	}
-	
-	def addCurAndSuper(builder, currentAcademic, depth) {
-		if (depth == 0 || currentAcademic == null) return
-		else {
-			builder.current(name:currentAcademic.firstName + " " + currentAcademic.lastName, id:currentAcademic.id, expanded:true) {
-				for (person in currentAcademic.supervises) {
-					addCurAndSuper(builder, person, depth-1)
-				}
-			}
-		}
+		["data":academicService.generateTree(academic, params.int('depth'))]
 	}
 	
 	def autoSearch = {
@@ -56,7 +41,7 @@ class AcademicController {
 			results() {
 				aNames.each { currentA ->
 					result() {
-						name(currentA.firstName + " " +  currentA.middleName +  " " + currentA.lastName)
+						name(currentA.toString())
 					}
 				}
 			}

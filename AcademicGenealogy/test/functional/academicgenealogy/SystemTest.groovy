@@ -1,7 +1,6 @@
 package academicgenealogy
 
 import geb.junit4.GebReportingTest
-
 import org.junit.Test
 
 import au.com.workingmouse.testcase.TestcaseDocument

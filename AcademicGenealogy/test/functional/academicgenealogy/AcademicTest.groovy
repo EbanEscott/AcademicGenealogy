@@ -1,4 +1,5 @@
 package academicgenealogy
+
 import geb.junit4.GebReportingTest
 import org.junit.Test
 
