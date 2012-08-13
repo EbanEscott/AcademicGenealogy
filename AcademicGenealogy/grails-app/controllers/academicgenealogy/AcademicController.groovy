@@ -4,7 +4,7 @@ import org.springframework.dao.DataIntegrityViolationException
 import groovy.xml.MarkupBuilder
 import grails.plugins.springsecurity.Secured
 
-@Secured(['ROLE_ADMIN'])
+@Secured(['ROLE_SUPER', 'ROLE_ADMIN'])
 class AcademicController {
 	
 	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -31,7 +31,6 @@ class AcademicController {
 		def byLname = Academic.findAllByLastNameIlike("%${params.query}%")
 		def aNames = byFname + byMname + byLname
 		aNames = aNames.unique()
-		
 		render(contentType: "text/xml") {
 			results() {
 				aNames.each { currentA ->
@@ -44,7 +43,7 @@ class AcademicController {
 	}
 
     def index() {
-        redirect(action: "list", params: params)
+        redirect(action: "find", params: params)
     }
 
     def list() {

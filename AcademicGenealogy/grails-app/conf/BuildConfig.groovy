@@ -48,8 +48,17 @@ grails.project.dependency.resolution = {
 		compile ":richui:0.8"
 		//added springsec for login etc
 		compile ":spring-security-core:1.2.7.3"
-        build ":tomcat:$grailsVersion"
+		//mail add for springsecui
+		compile ":mail:1.0"
+		//jqueryui added for springsecui
+		compile ":jquery-ui:1.8.15"
+		//famfamfam add for springesecui
+		compile ":famfamfam:1.0.1"
+		//springsecui
+		compile ":spring-security-ui:0.2"
 		//added geb for testing
 		test ":geb:0.7.1"
+		
+		build ":tomcat:$grailsVersion"
     }
 }

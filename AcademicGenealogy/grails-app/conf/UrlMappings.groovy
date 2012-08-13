@@ -7,7 +7,8 @@ class UrlMappings {
 			}
 		}
 		//home changed from index view to academic controller
-		"/"(controller: "academic", action:"find")
+		//"/"(controller: "academic", action:"find")
+		"/" (view: "index")
 		"500"(view:'/error')
 	}
 }

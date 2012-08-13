@@ -8,6 +8,9 @@ class BootStrap {
 		def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush:true)
 		def adminUser = new User(username:'admin', enabled:true, password:'admin').save(flush:true)
 		UserRole.create(adminUser, adminRole, true)
+		def superRole = new Role(authority: 'ROLE_SUPER').save(flush:true)
+		def superUser = new User(username:'super', enabled:true, password:'super').save(flush:true)
+		UserRole.create(superUser, superRole, true)
 
 		
 		//Create countries
