@@ -97,8 +97,14 @@ grails.plugins.springsecurity.userLookup.userDomainClassName = 'academicgenealog
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'academicgenealogy.UserRole'
 grails.plugins.springsecurity.authority.className = 'academicgenealogy.Role'
 grails.plugins.springsecurity.controllerAnnotations.staticRules = [
-	'/users/**' : ['ROLE_SUPER'],
-	'/roles/**' : ['ROLE_SUPER'],
+	'/user/**' : ['ROLE_SUPER'],
+	'/role/**' : ['ROLE_SUPER'],
 	'/registrationCode/**' : ['ROLE_SUPER'],
-	'/securityInfo/**' : ['ROLE_SUPER']
+	'/securityInfo/**' : ['ROLE_SUPER'],
+	'/requestmap/**' : ['ROLE_SUPER'],
+	'/persistentLogin/**' : ['ROLE_SUPER'],
+	'/aclSid/**' : ['ROLE_SUPER'],
+	'/aclObjectIdentity/**' : ['ROLE_SUPER'],
+	'/aclEntry/**' : ['ROLE_SUPER'],
+	'/aclClass/**' : ['ROLE_SUPER']
 ]
