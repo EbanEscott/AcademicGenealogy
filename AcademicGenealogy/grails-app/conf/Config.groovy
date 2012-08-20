@@ -96,3 +96,9 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'academicgenealogy.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'academicgenealogy.UserRole'
 grails.plugins.springsecurity.authority.className = 'academicgenealogy.Role'
+grails.plugins.springsecurity.controllerAnnotations.staticRules = [
+	'/users/**' : ['ROLE_SUPER'],
+	'/roles/**' : ['ROLE_SUPER'],
+	'/registrationCode/**' : ['ROLE_SUPER'],
+	'/securityInfo/**' : ['ROLE_SUPER']
+]
